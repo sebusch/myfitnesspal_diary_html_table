@@ -1,0 +1,73 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <!--<link rel="stylesheet" href="/style.css">-->
+    
+    <!-- import the webpage's client-side javascript file -->
+<!--    <script src="/client.js" defer></script> -->
+  </head>
+  <body>
+
+      <p class="bold">Oh hi,</p>
+      
+      <p>This is a very simplistic interface to download MyFitnessPal data. It will be accessing your printable diary page at:<br>
+      https://www.myfitnesspal.com/reports/printable_diary/yourUserName?from=YYYY-MM-DD&to=YYYY-MM-DD<br>
+        e.g. https://www.myfitnesspal.com/reports/printable_diary/yourUserName?from=2018-08-01&to=2018-08-31<br>
+    </p>
+      <p>
+        There is not much error checking, so be sure to enter the dates correctly and be sure your diary is public.<br>
+        The dates must be no more than 365 days apart, and the early one must be entered in the "From" box.<br>
+        If this is not followed, you may not get the result you want. Check the address bar after submitting for the values you entered.
+    </p>
+    <p>
+      You can select-all (ctrl-a on windows) the table that's returned, and copy-paste into Excel or Google Sheets.
+    </p>
+      <form action="/extract-data" >
+        <label>Username</label>
+        <input required name="user" type="text" maxlength="100" placeholder="Username" ><br>
+        <label>From: </label>
+        <input required name="from" type="date">
+        <label>To: </label>
+        <input required name="to" type="date"><br>
+        <input name="kind" type="radio" value="food" checked>Export Food Diary<br>
+        <input name="kind" type="radio" value="exercise">Export Exercise Diary<br>
+        <input name="kind" type="radio" value="notes">Export Notes<br><br>
+        <input name="totals" type="checkbox" value="true" checked>Include Daily Totals?<br>
+        
+        <button type="submit" id="submit">Submit</button>
+      </form>
+  <h4>
+      Changed:
+       </h4>
+   <ul>
+        <li>Output Dates in YYYY-MM-DD format</li>
+       <li>Make outputting totals an option</li>
+   </ul>   
+   <h4>
+     To Do:
+        </h4>
+     <ul>
+
+       <li>Output in CSV</li>
+       <li>Allow people to upload their own diary instead of this site accessing mfp directly</li>
+     </ul>    
+   
+  </body>
+</html>
